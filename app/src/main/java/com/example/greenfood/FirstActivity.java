@@ -28,7 +28,7 @@ public class FirstActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-
+    private String var = "vlad";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
