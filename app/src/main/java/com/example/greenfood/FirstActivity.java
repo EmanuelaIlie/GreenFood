@@ -28,13 +28,10 @@ public class FirstActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-    private String var = "vlad";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
 
 
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
