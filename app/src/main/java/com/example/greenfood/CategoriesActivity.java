@@ -17,13 +17,15 @@ public class CategoriesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+
         MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
 
                 new MyGreenFoodData("Sandvis","3 sandvisuri sanatoase, perfecte pentru micul dejun",R.drawable.poza01),
                 new MyGreenFoodData("Tocanita de legume cu tofu","O portie plina de vitamine",R.drawable.poza02),
                 new MyGreenFoodData("Tort de ciocolata","Tort  cu multa ciocolata",R.drawable.poza03),
                 new MyGreenFoodData("Briose","3 feluri de briose, decorate cu frisca si fructe",R.drawable.poza04),
-                new MyGreenFoodData("Pizza inima","Pizza in forma de inima cu multe rosii",R.drawable.poza05),
+                new MyGreenFoodData("pizza","Pizza in forma de inima cu multe rosii",R.drawable.poza05),
                 new MyGreenFoodData("MilkShake","Milkshake cu lapte de migdale",R.drawable.poza06),
 
         };

@@ -1,6 +1,7 @@
 package com.example.greenfood;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,10 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, myGreenFoodDataList.getFoodName() ,Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(v.getContext(), ReceipesActivity.class);
+                intent.putExtra("nume",myGreenFoodDataList.getFoodName());
+                v.getContext().startActivity(intent);
             }
         });
     }

@@ -39,7 +39,7 @@ public class FirstActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //adaugaCategorii();
-        extrageNumeSiImagine();
+        //extrageNumeSiImagine();
         //afisare();
 
 
@@ -47,7 +47,7 @@ public class FirstActivity extends AppCompatActivity {
         MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
 
 
-                new MyGreenFoodData("Mic dejun","",R.drawable.poza01),
+                new MyGreenFoodData("cina","",R.drawable.poza01),
               /*  new MyGreenFoodData("Pranz","",R.drawable.poza02),
                 new MyGreenFoodData("Desert","",R.drawable.poza03),
                 //new MyGreenFoodData("Briose","3 feluri de briose, decorate cu frisca si fructe",R.drawable.poza04),
@@ -62,14 +62,15 @@ public class FirstActivity extends AppCompatActivity {
 
     }
     private void afisare(){
-        MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[100];
-        //myGreenFoodData[0]= new MyGreenFoodData("Mic dejun","",R.drawable.poza01);
+
 
        /*for(int i=0;i<nameCategory.size();i++) {
             int img=Integer.parseInt(imageCategory.get(i));
             myGreenFoodData[i]=new MyGreenFoodData(nameCategory.get(i).toString()," ".toString(),img);
         }*/
 
+        for(int i=0;i<nameCategory.size();i++)
+            Toast.makeText(FirstActivity.this,nameCategory.get(i),Toast.LENGTH_LONG).show();
 
     }
 
@@ -81,10 +82,10 @@ public class FirstActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int lungime = (int) dataSnapshot.child("category").getChildrenCount();
                 for(int i=1;i<=lungime;i++){
-                    String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("name").getValue());
-                    String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("image").getValue());
+                    String nume = String.valueOf(dataSnapshot.child("category").getKey());
+                    //String imagine = String.valueOf(dataSnapshot.child("category").child(nume).child("image").getValue());
                     nameCategory.add(nume);
-                    imageCategory.add(imagine);
+                   // imageCategory.add(imagine);
                     Toast.makeText(FirstActivity.this,nameCategory.get(i-1),Toast.LENGTH_LONG).show();
                 }
             }
@@ -98,9 +99,9 @@ public class FirstActivity extends AppCompatActivity {
     public void adaugaCategorii(){
 
 
-        String lung = String.valueOf(nameCategory.size()+1);
-        myRef.child("category").child(lung).child("name").setValue("pranz");
-        myRef.child("category").child(lung).child("image").setValue(R.drawable.poza02);
+        //String lung = String.valueOf(nameCategory.size()+1);
+       // myRef.child("category").child("cina").setValue("pranz");
+        myRef.child("category").child("cina").child("image").setValue(R.drawable.poza04);
     }
 
 }

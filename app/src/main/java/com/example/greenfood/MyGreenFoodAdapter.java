@@ -42,6 +42,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), CategoriesActivity.class);
+                //intent.putExtra("nume",myGreenFoodDataList.getFoodName());
                 v.getContext().startActivity(intent);
             }
         });
