@@ -49,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(verificareAutentificare()){
+                if(verificareAutentificare() && verificareAutentificareAdministrator()==false){
                     Intent intent = new Intent(MainActivity.this, FirstActivity.class);
                     startActivity(intent);
-                }else{
+                }else
+                if(verificareAutentificareAdministrator()){
+                    Intent intent = new Intent(MainActivity.this, AdministratorActivity.class);
+                    startActivity(intent);
+                }else
+                    {
                     Toast.makeText(MainActivity.this,"Aceste date nu exista in sistem.",Toast.LENGTH_LONG).show();
                 }
             }
@@ -64,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean verificareAutentificareAdministrator(){
+        String email = emailMain.getText().toString();
+        String parola = passwordMain.getText().toString();
+        if(email.equals("emanuela.ilie99@e-uvt.ro") && parola.equals("ema123"))
+            return true;
+        return false;
     }
 
     private boolean verificareAutentificare(){

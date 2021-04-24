@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenFood">
-        <activity android:name=".ReceipesActivity"></activity>
+        <activity android:name=".AdaugareCategorieActivity"></activity>
+        <activity android:name=".AdaugareReteteActivity" />
+        <activity android:name=".AdministratorActivity" />
+        <activity android:name=".ReceipesActivity" />
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".CreareContActivity" />
         <activity android:name=".FirstActivity" />
