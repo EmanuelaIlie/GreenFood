@@ -23,13 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstActivity extends AppCompatActivity {
-
-    private static final String TAG = "emanuela";
-    EditText editText;
-
-    private List<String> nameCategory = new ArrayList<String>();
-    private List<String> imageCategory = new ArrayList<String>();
+public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapter.OnItemClickListener{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -41,41 +35,42 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
-
-        //adaugaCategorii();
-        //extrageNumeSiImagine();
-        //afisare();
-
-        MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
+        extrageNumeSiImagine();
+/*        MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
                 new MyGreenFoodData("cina","",R.drawable.poza01),
                 new MyGreenFoodData("Pranz","",R.drawable.poza02),
         };
+*/
 
-        MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this);
-        recyclerView.setAdapter(myGreenFoodAdapter);
+
+
     }
 
 
     private void extrageNumeSiImagine(){
+        RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             private static final String TAG = "ema";
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
                 int lungime = (int) dataSnapshot.child("category").getChildrenCount();
+                MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[lungime];
                 for(int i=1;i<=lungime;i++){
-                    String nume = String.valueOf(dataSnapshot.child("category").getKey());
-                    //String imagine = String.valueOf(dataSnapshot.child("category").child(nume).child("image").getValue());
-                    nameCategory.add(nume);
-                   // imageCategory.add(imagine);
-                    Toast.makeText(FirstActivity.this,nameCategory.get(i-1),Toast.LENGTH_LONG).show();
+
+                        String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("name").getValue());
+                        String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("image").getValue());
+                        int img = Integer.parseInt(imagine);
+                        myGreenFoodData[i - 1] = new MyGreenFoodData(nume, " ", img);
+                       // Log.d("EMA", nume);
+
                 }
+                MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this);
+                recyclerView.setAdapter(myGreenFoodAdapter);
             }
             @Override
             public void onCancelled(DatabaseError error) {
@@ -83,14 +78,13 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public void adaugaCategorii(){
 
-
-        //String lung = String.valueOf(nameCategory.size()+1);
-       // myRef.child("category").child("cina").setValue("pranz");
-        myRef.child("category").child("cina").child("image").setValue(R.drawable.poza04);
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent=new Intent(FirstActivity.this,CategoriesActivity.class);
+        startActivity(intent);
+    }
 }

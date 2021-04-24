@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.ViewHolder> {
     MyGreenFoodData[] myGreenFoodData;
     Context context;
+    OnItemClickListener listener;
     public MyGreenFoodAdapter(MyGreenFoodData[] myGreenFoodData, FirstActivity activity) {
         this.myGreenFoodData=myGreenFoodData;
         this.context=activity;
@@ -50,6 +51,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
 
                 Intent intentFereastraNoua = new Intent(v.getContext(), CategoriesActivity.class);
                 v.getContext().startActivity(intentFereastraNoua);
+               // listener.onItemClick(position);
             }
         });
     }

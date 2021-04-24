@@ -24,15 +24,6 @@
             app:layout_constraintTop_toTopOf="parent"
 
             />
-    <EditText
-        android:id="@+id/editTextTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintHorizontal_bias="0.0"
-         />
 
 
 </LinearLayout>

@@ -44,7 +44,7 @@ public class CategoriesActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            numeCategorie = intent.getStringExtra("numeCategorie");
+           // numeCategorie = intent.getStringExtra("numeCategorie");
 
 
         }
@@ -56,26 +56,32 @@ public class CategoriesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        Log.d("EMA",numeCategorie);
-        //Log.d("EMA","peste");
-
-            // Read from the database
             myRef.addValueEventListener(new ValueEventListener() {
-                private static final String TAG = "emanuela";
+
 
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    int lungime = (int) dataSnapshot.child("category").child(numeCategorie).child("receipe").getChildrenCount();
+                    int lg = (int) dataSnapshot.child("category").getChildrenCount();
+                    int x=0;
+                    for(x=1;x<=lg;x++)
+                        if(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("name").getValue()).equals(numeCategorie))
+                            break;
+
+
+                    int lungime = (int) dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").getChildrenCount();
+
                     MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[lungime];
                     for(int i=1;i<=lungime;i++){
 
-                        String descriere = String.valueOf(dataSnapshot.child("category").child(numeCategorie).child("receipe").child(String.valueOf(i)).child("description").getValue());
-                        String nume = String.valueOf(dataSnapshot.child("category").child(numeCategorie).child("receipe").child(String.valueOf(i)).child("name").getValue());
-                        String imagine = String.valueOf(dataSnapshot.child("category").child(numeCategorie).child("receipe").child(String.valueOf(i)).child("image").getValue());
+                        String descriere = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("description").getValue());
+                        String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue());
+                        String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("image").getValue());
+                        Log.d("EMA",nume);
                         int img=Integer.parseInt(imagine);
                         myGreenFoodData[i-1]=new MyGreenFoodData(nume,descriere,img);
+
+
                     }
 
 
@@ -85,7 +91,7 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    Log.w(TAG, "Failed to read value.", error.toException());
+                    Log.w("EMA", "Failed to read value.", error.toException());
                 }
             });
 
