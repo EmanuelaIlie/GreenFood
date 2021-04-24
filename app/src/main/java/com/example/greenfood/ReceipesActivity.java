@@ -29,8 +29,7 @@ public class ReceipesActivity extends AppCompatActivity {
     TextView preparare;
     ImageView imagine;
 
-   // String nameReteta = getIntent().getStringExtra("nume");
-    String nameReteta="pizza";
+    String nameReteta = getIntent().getStringExtra("numeReteta");
     String name="cina";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();

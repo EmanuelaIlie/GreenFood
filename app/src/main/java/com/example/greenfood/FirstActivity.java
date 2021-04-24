@@ -1,9 +1,14 @@
 package com.example.greenfood;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -20,6 +25,7 @@ import java.util.List;
 
 public class FirstActivity extends AppCompatActivity {
 
+    private static final String TAG = "emanuela";
     EditText editText;
 
     private List<String> nameCategory = new ArrayList<String>();
@@ -28,51 +34,33 @@ public class FirstActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
+    String numeCategorie="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
 
         //adaugaCategorii();
         //extrageNumeSiImagine();
         //afisare();
 
-
-
         MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
-
-
                 new MyGreenFoodData("cina","",R.drawable.poza01),
-              /*  new MyGreenFoodData("Pranz","",R.drawable.poza02),
-                new MyGreenFoodData("Desert","",R.drawable.poza03),
-                //new MyGreenFoodData("Briose","3 feluri de briose, decorate cu frisca si fructe",R.drawable.poza04),
-                new MyGreenFoodData("Pizza","",R.drawable.poza05),
-                new MyGreenFoodData("MilkShake","",R.drawable.poza06),*/
-
+                new MyGreenFoodData("Pranz","",R.drawable.poza02),
         };
 
         MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this);
         recyclerView.setAdapter(myGreenFoodAdapter);
-
-
     }
-    private void afisare(){
 
-
-       /*for(int i=0;i<nameCategory.size();i++) {
-            int img=Integer.parseInt(imageCategory.get(i));
-            myGreenFoodData[i]=new MyGreenFoodData(nameCategory.get(i).toString()," ".toString(),img);
-        }*/
-
-        for(int i=0;i<nameCategory.size();i++)
-            Toast.makeText(FirstActivity.this,nameCategory.get(i),Toast.LENGTH_LONG).show();
-
-    }
 
     private void extrageNumeSiImagine(){
         // Read from the database
@@ -103,5 +91,6 @@ public class FirstActivity extends AppCompatActivity {
        // myRef.child("category").child("cina").setValue("pranz");
         myRef.child("category").child("cina").child("image").setValue(R.drawable.poza04);
     }
+
 
 }

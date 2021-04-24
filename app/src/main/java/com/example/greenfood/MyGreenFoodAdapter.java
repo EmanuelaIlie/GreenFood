@@ -2,6 +2,7 @@ package com.example.greenfood;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.ViewHolder> {
@@ -33,7 +35,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MyGreenFoodData myGreenFoodDataList = myGreenFoodData[position];
-
+        final String TAG="emanuela";
         holder.textViewListName.setText(myGreenFoodDataList.getFoodName());
         holder.textViewListDescription.setText("");
         holder.movieListImage.setImageResource(myGreenFoodDataList.getFoodImage());
@@ -41,14 +43,20 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), CategoriesActivity.class);
-                //intent.putExtra("nume",myGreenFoodDataList.getFoodName());
-                v.getContext().startActivity(intent);
+                Intent intent = new Intent("custom-message");
+                intent.putExtra("numeCategorie",myGreenFoodDataList.getFoodName().toString());
+               // Log.w(TAG,myGreenFoodDataList.getFoodName());
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+
+                Intent intentFereastraNoua = new Intent(v.getContext(), CategoriesActivity.class);
+                v.getContext().startActivity(intentFereastraNoua);
             }
         });
     }
 
-
+    interface OnItemClickListener{
+        void onItemClick(int position);
+    }
     public int getItemCount() {
         return myGreenFoodData.length;
     }
