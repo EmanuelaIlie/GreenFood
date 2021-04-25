@@ -23,11 +23,14 @@
         android:id="@+id/editTextAdaugareNumeCategorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
         android:ems="10"
+        android:hint="Nume categorie"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="83dp" />
+        app:layout_constraintVertical_bias="0.433" />
 
     <EditText
         android:id="@+id/editTextAdaugareImagineCategorie"
@@ -41,4 +44,15 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareNumeCategorie"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextAdaugareNumeCategorie" />
+
+    <Button
+        android:id="@+id/buttonAdCategorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="140dp"
+        android:text="Adaugare categorie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

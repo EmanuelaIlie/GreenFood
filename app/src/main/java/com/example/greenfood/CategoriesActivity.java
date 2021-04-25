@@ -25,7 +25,7 @@ public class CategoriesActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-    String numeCategorie="cina";
+    String numeCategorie="desert";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

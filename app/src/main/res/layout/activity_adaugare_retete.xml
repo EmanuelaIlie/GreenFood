@@ -31,18 +31,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <EditText
         android:id="@+id/editTextAdaugareIngredienteReteta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Ingrediente"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareNumeReteta"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editTextAdaugareNumeReteta"
         app:layout_constraintTop_toBottomOf="@+id/editTextAdaugareNumeReteta" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/editTextAdaugareImagineReteta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="imagine"
         android:inputType="textPersonName"
@@ -73,13 +73,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextAdaugareImagineReteta"
         app:layout_constraintTop_toBottomOf="@+id/editTextAdaugareImagineReteta"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.105" />
 
     <EditText
         android:id="@+id/editTextAdaugareDescriereReteta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="232dp"
         android:ems="10"
         android:hint="descriere"
         android:inputType="textPersonName"
@@ -98,4 +98,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCategorieReteta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="144dp"
+        android:ems="10"
+        android:hint="categorie"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareDescriereReteta"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextAdaugareDescriereReteta" />
 </androidx.constraintlayout.widget.ConstraintLayout>
