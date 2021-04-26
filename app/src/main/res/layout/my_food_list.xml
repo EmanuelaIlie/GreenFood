@@ -35,13 +35,13 @@
 
                 <TextView
                     android:id="@+id/textListName"
-                    android:layout_width="160dp"
+                    android:layout_width="146dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="40dp"
                     android:text=""
                     android:textColor="#000"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView

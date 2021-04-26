@@ -27,7 +27,7 @@ public class ReceipesActivity extends AppCompatActivity {
     ImageView imagine;
 
     //String nameReteta = getIntent().getStringExtra("numeReteta");
-    String numeReteta="Orez cu lapte vegetal";
+    String numeReteta="Clatite americane cu lapte de migdale";
     String numeCategorie="desert";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -68,14 +68,14 @@ public class ReceipesActivity extends AppCompatActivity {
                 for(int i=1;i<=lungime;i++){
                     Log.d("EMA","am ajuns inainte de if");
                     if(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue()).equals(numeReteta)) {
-                        ingrediente.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("ingredients").getValue()));
+                        ingrediente.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("ingredients").getValue()).replace("_n","\n"));
                         nume.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue()));
-                        preparare.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("preparation").getValue()));
+                        preparare.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("preparation").getValue()).replace("_n","\n"));
                         String img = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("image").getValue());
 
                         int id = Integer.parseInt(img);
                         imagine.setImageResource(id);
-                        Log.d("EMA","am ajuns pana in if");
+                        //Log.d("EMA","am ajuns pana in if");
                         break;
 
                     }

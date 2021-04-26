@@ -15,22 +15,21 @@
         android:text="Adaugare reteta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <Button
         android:id="@+id/butonAdaugareCategorie"
         android:layout_width="198dp"
         android:layout_height="53dp"
+        android:layout_marginTop="32dp"
         android:text="Adaugare categorie"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdaugareReteta"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonAdaugareReteta"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdaugareReteta" />
 
     <TextView
         android:id="@+id/textView3"
@@ -45,4 +44,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/buttonSpreCategorii"
+        android:layout_width="198dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="244dp"
+        android:text="Catre categorii"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/butonAdaugareCategorie"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/butonAdaugareCategorie"
+        app:layout_constraintTop_toBottomOf="@+id/butonAdaugareCategorie"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
