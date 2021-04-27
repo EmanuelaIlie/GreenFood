@@ -26,9 +26,6 @@ public class ReceipesActivity extends AppCompatActivity {
     TextView preparare;
     ImageView imagine;
 
-    //String nameReteta = getIntent().getStringExtra("numeReteta");
-    String numeReteta="Clatite americane cu lapte de migdale";
-    String numeCategorie="desert";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     @Override
@@ -36,7 +33,10 @@ public class ReceipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipes);
 
-        extrage();
+        String numeCategorie=getIntent().getStringExtra("numeCategorie");
+        String numeReteta=getIntent().getStringExtra("numeReteta");
+
+        extrage(numeCategorie,numeReteta);
         //construieste();
 
 
@@ -44,7 +44,7 @@ public class ReceipesActivity extends AppCompatActivity {
     }
 
 
-    private void extrage(){
+    private void extrage(String numeCategorie,String numeReteta){
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             private static final String TAG = "EMA";

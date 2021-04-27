@@ -19,13 +19,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class CategoriesActivity extends AppCompatActivity {
+public class CategoriesActivity extends AppCompatActivity implements MyGreenFoodAdapterCategories.OnItemClickListenerCategories{
 
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-
+    MyGreenFoodData[] myGreenFoodData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +77,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
                     int lungime = (int) dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").getChildrenCount();
 
-                    MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[lungime];
+                    myGreenFoodData = new MyGreenFoodData[lungime];
                     for(int i=1;i<=lungime;i++){
 
                         String descriere = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("description").getValue());
@@ -104,5 +104,17 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClickCategories(int position) {
+        String numeReteta=myGreenFoodData[position].getFoodName();
+        String numeCategorie=getIntent().getStringExtra("numeCategorie");
+        Intent intent=new Intent(CategoriesActivity.this,ReceipesActivity.class);
+        //Toast.makeText(FirstActivity.this, "o afisez din interfata", Toast.LENGTH_LONG).show();
+        intent.putExtra("numeCategorie",numeCategorie);
+        intent.putExtra("numeReteta",numeReteta);
+        Log.d("EMA",numeReteta+" in interfata");
 
+
+        startActivity(intent);
+    }
 }

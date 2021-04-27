@@ -35,7 +35,6 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final MyGreenFoodData myGreenFoodDataList = myGreenFoodData[position];
-        final String TAG="emanuela";
         holder.textViewListName.setText(myGreenFoodDataList.getFoodName());
         holder.textViewListDescription.setText("");
         holder.movieListImage.setImageResource(myGreenFoodDataList.getFoodImage());

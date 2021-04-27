@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFoodAdapterCategories.ViewHolder> {
     MyGreenFoodData[] myGreenFoodData;
-    Context context;
-    public MyGreenFoodAdapterCategories(MyGreenFoodData[] myGreenFoodData, CategoriesActivity activity) {
+    OnItemClickListenerCategories mOnItemClickListenerCategories;
+    public MyGreenFoodAdapterCategories(MyGreenFoodData[] myGreenFoodData,OnItemClickListenerCategories onItemClickListenerCategories) {
         this.myGreenFoodData=myGreenFoodData;
-        this.context=activity;
+        this.mOnItemClickListenerCategories=onItemClickListenerCategories;
     }
 
     @NonNull
@@ -25,7 +25,7 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =LayoutInflater.from(parent.getContext());
         View view=layoutInflater.inflate(R.layout.my_food_list,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        ViewHolder viewHolder = new ViewHolder(view,mOnItemClickListenerCategories);
 
         return viewHolder;
     }
@@ -38,33 +38,38 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
         holder.textViewListDescription.setText(myGreenFoodDataList.getFoodDescription());
         holder.movieListImage.setImageResource(myGreenFoodDataList.getFoodImage());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(v.getContext(), ReceipesActivity.class);
-                intent.putExtra("numeReteta",myGreenFoodDataList.getFoodName());
-                v.getContext().startActivity(intent);
-            }
-        });
     }
 
+    interface OnItemClickListenerCategories{
+        void onItemClickCategories(int position);
+    }
 
     public int getItemCount() {
         return myGreenFoodData.length;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView movieListImage;
         TextView textViewListName;
         TextView textViewListDescription;
+        OnItemClickListenerCategories onItemClickListenerCategories;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListenerCategories mOnItemClickListenerCategories) {
             super(itemView);
             movieListImage = itemView.findViewById(R.id.imageListview);
             textViewListName=itemView.findViewById(R.id.textListName);
             textViewListDescription = itemView.findViewById(R.id.textListDescription);
+
+            this.onItemClickListenerCategories=mOnItemClickListenerCategories;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onItemClickListenerCategories.onItemClickCategories(getAdapterPosition());
         }
     }
 }
