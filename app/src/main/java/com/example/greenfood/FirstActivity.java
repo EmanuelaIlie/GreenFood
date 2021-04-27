@@ -28,12 +28,16 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
+
     String numeCategorie="";
+
+    MyGreenFoodData[] myGreenFoodData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+
 
 
         extrageNumeSiImagine();
@@ -43,8 +47,6 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
         };
 */
 
-
-
     }
 
 
@@ -52,6 +54,7 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             private static final String TAG = "ema";
@@ -59,7 +62,9 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 int lungime = (int) dataSnapshot.child("category").getChildrenCount();
-                MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[lungime];
+                myGreenFoodData = new MyGreenFoodData[lungime];
+
+
                 for(int i=1;i<=lungime;i++){
 
                         String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("name").getValue());
@@ -69,7 +74,7 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
                        // Log.d("EMA", nume);
 
                 }
-                MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this);
+                MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this::onItemClick);
                 recyclerView.setAdapter(myGreenFoodAdapter);
             }
             @Override
@@ -84,7 +89,15 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
 
     @Override
     public void onItemClick(int position) {
+
+        String numeCategorie=myGreenFoodData[position].getFoodName();
         Intent intent=new Intent(FirstActivity.this,CategoriesActivity.class);
+        Toast.makeText(FirstActivity.this, "o afisez din interfata", Toast.LENGTH_LONG).show();
+        intent.putExtra("numeCategorie",numeCategorie);
+        Log.d("EMA",numeCategorie+" in interfata");
+
+
         startActivity(intent);
+
     }
 }

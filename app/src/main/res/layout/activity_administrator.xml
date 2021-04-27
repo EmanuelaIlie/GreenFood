@@ -47,15 +47,16 @@
 
     <Button
         android:id="@+id/buttonSpreCategorii"
-        android:layout_width="198dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="244dp"
+        android:layout_width="206dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="192dp"
         android:text="Catre categorii"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/butonAdaugareCategorie"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="@+id/butonAdaugareCategorie"
         app:layout_constraintTop_toBottomOf="@+id/butonAdaugareCategorie"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

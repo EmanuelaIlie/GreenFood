@@ -25,17 +25,19 @@ public class CategoriesActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-    String numeCategorie="desert";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
-                new IntentFilter("custom-message"));
+        String numeCategorie=getIntent().getStringExtra("numeCategorie");
 
-        extrageLista();
+        Log.d("EMA",numeCategorie+" in onCreate");
+      /*  LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));*/
+
+        extrageLista(numeCategorie);
     }
 
 
@@ -44,14 +46,17 @@ public class CategoriesActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-           // numeCategorie = intent.getStringExtra("numeCategorie");
+           /* numeCategorie = intent.getStringExtra("numeCategorie");
+            Log.d("EMA",numeCategorie +" in broadcast");
+            Toast.makeText(CategoriesActivity.this, numeCategorie,Toast.LENGTH_LONG).show();
+            extrageLista();
 
-
+*/
         }
     };
 
 
-    public void extrageLista(){
+    public void extrageLista(String numeCategorie){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -61,13 +66,14 @@ public class CategoriesActivity extends AppCompatActivity {
 
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("EMA",numeCategorie+" in bd");
 
                     int lg = (int) dataSnapshot.child("category").getChildrenCount();
                     int x=0;
                     for(x=1;x<=lg;x++)
                         if(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("name").getValue()).equals(numeCategorie))
                             break;
-
+                    Log.d("EMA",String.valueOf(x)+" valoare in bd");
 
                     int lungime = (int) dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").getChildrenCount();
 
@@ -77,7 +83,7 @@ public class CategoriesActivity extends AppCompatActivity {
                         String descriere = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("description").getValue());
                         String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue());
                         String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("image").getValue());
-                        Log.d("EMA",nume);
+                        //Log.d("EMA",nume);
                         int img=Integer.parseInt(imagine);
                         myGreenFoodData[i-1]=new MyGreenFoodData(nume,descriere,img);
 
@@ -96,6 +102,7 @@ public class CategoriesActivity extends AppCompatActivity {
             });
 
     }
+
 
 
 }

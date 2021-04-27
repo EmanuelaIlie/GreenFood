@@ -66,7 +66,7 @@ public class ReceipesActivity extends AppCompatActivity {
                 int lungime = (int) dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").getChildrenCount();
 
                 for(int i=1;i<=lungime;i++){
-                    Log.d("EMA","am ajuns inainte de if");
+                    //Log.d("EMA","am ajuns inainte de if");
                     if(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue()).equals(numeReteta)) {
                         ingrediente.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("ingredients").getValue()).replace("_n","\n"));
                         nume.setText(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue()));
