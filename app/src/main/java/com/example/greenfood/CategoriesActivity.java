@@ -84,8 +84,8 @@ public class CategoriesActivity extends AppCompatActivity implements MyGreenFood
                         String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("name").getValue());
                         String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").child(String.valueOf(i)).child("image").getValue());
                         //Log.d("EMA",nume);
-                        int img=Integer.parseInt(imagine);
-                        myGreenFoodData[i-1]=new MyGreenFoodData(nume,descriere,img);
+
+                        myGreenFoodData[i-1]=new MyGreenFoodData(nume,descriere,imagine);
 
 
                     }

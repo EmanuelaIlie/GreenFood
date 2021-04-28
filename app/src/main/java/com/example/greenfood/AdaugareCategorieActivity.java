@@ -1,26 +1,42 @@
 package com.example.greenfood;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class AdaugareCategorieActivity extends AppCompatActivity {
 
-    EditText newNume, newImagine;
+    EditText newNume;
+    ImageView imageViewCategorie;
     Button buttonAdaugaCategorie;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    private StorageReference reference= FirebaseStorage.getInstance().getReference();
+
+
+    private Uri imageUri;
 
     String nume="",ingrediente="",preparare="",descriere="",categorie="",imagine="";
     int lg=0;
@@ -30,15 +46,24 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adaugare_categorie);
 
         newNume = (EditText) findViewById(R.id.editTextAdaugareNumeCategorie);
-        newImagine = (EditText) findViewById(R.id.editTextAdaugareImagineCategorie);
+        imageViewCategorie=findViewById(R.id.imageViewCategory);
         buttonAdaugaCategorie = (Button) findViewById(R.id.buttonAdCategorie);
+
+        imageViewCategorie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent=new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent,2);
+            }
+        });
 
         buttonAdaugaCategorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 nume=newNume.getText().toString();
-                imagine=newImagine.getText().toString();
                 extrage();
                 Toast.makeText(AdaugareCategorieActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
             }
@@ -52,10 +77,16 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
 
                 lg = (int) dataSnapshot.child("category").getChildrenCount();
 
+                if(imageUri!=null){
+                    uploadToFirebase(imageUri);
+                }
+                else{
+                    Toast.makeText(AdaugareCategorieActivity.this, "Please select image",Toast.LENGTH_LONG).show();
+                }
 
                 Log.d("EMA",String.valueOf(lg)+"nr caategorii in bd");
                 myRef.child("category").child(String.valueOf(lg+1)).child("name").setValue(nume);
-                myRef.child("category").child(String.valueOf(lg+1)).child("image").setValue(imagine);
+                myRef.child("category").child(String.valueOf(lg+1)).child("image").setValue(nume);
 
             }
             @Override
@@ -65,5 +96,38 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
             //Log.d("EMA",String.valueOf(lungime)+"nr caategorii in bd");
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==2 &&  resultCode==RESULT_OK && data!=null){
+            imageUri=data.getData();
+            imageViewCategorie.setImageURI(imageUri);
+
+        }
+    }
+
+    private void uploadToFirebase(Uri uri){
+        StorageReference fileRef=reference.child("category/"+nume+".jpg");
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Toast.makeText(AdaugareCategorieActivity.this,"Successfully",Toast.LENGTH_LONG).show();
+                        Log.d("EMA","adaugare in storage");
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AdaugareCategorieActivity.this,"Uploading fail",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
 }

@@ -69,8 +69,7 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
 
                         String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("name").getValue());
                         String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("image").getValue());
-                        int img = Integer.parseInt(imagine);
-                        myGreenFoodData[i - 1] = new MyGreenFoodData(nume, " ", img);
+                        myGreenFoodData[i - 1] = new MyGreenFoodData(nume, " ", imagine);
                        // Log.d("EMA", nume);
 
                 }

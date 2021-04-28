@@ -1,11 +1,11 @@
 package com.example.greenfood;
 
 public class MyGreenFoodData {
-    private Integer foodImage;
+    private String foodImage;
     private String foodName;
     private String foodDescription;
 
-    public MyGreenFoodData(String foodName, String foodDescription,Integer foodImage) {
+    public MyGreenFoodData(String foodName, String foodDescription,String foodImage) {
         this.foodImage = foodImage;
         this.foodName = foodName;
         this.foodDescription = foodDescription;
@@ -14,14 +14,14 @@ public class MyGreenFoodData {
     public MyGreenFoodData() {
         this.foodDescription="";
         this.foodName="";
-        this.foodImage=0;
+        this.foodImage="";
     }
 
-    public Integer getFoodImage() {
+    public String getFoodImage() {
         return foodImage;
     }
 
-    public void setFoodImage(Integer foodImage) {
+    public void setFoodImage(String foodImage) {
         this.foodImage = foodImage;
     }
 
