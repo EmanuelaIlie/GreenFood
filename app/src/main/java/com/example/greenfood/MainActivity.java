@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,12 +17,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button createAcc, login;
+    Button  login;
+    TextView createAccount;
     EditText emailMain, passwordMain;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createAcc = (Button) findViewById(R.id.buttonCreateAccount);
+        createAccount = findViewById(R.id.textViewCreateAccount);
         login = (Button) findViewById(R.id.buttonLogin);
         emailMain = (EditText) findViewById(R.id.editTextEmail);
         passwordMain = (EditText) findViewById(R.id.editTextPassword);
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        createAcc.setOnClickListener(new View.OnClickListener() {
+        createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreareContActivity.class);

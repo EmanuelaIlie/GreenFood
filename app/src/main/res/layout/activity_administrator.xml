@@ -4,28 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundadministrator"
+
 
     tools:context=".AdministratorActivity">
 
     <Button
         android:id="@+id/buttonAdaugareReteta"
-        android:layout_width="193dp"
+        android:layout_width="230dp"
         android:layout_height="51dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorAdmin"
         android:text="Adaugare reteta"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintVertical_bias="0.414" />
 
     <Button
         android:id="@+id/butonAdaugareCategorie"
-        android:layout_width="198dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="230dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/colorAdmin"
         android:text="Adaugare categorie"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdaugareReteta"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonAdaugareReteta"
@@ -33,30 +39,86 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="184dp"
-        android:layout_height="38dp"
-        android:text="Gestionare aplicatie"
-        android:textSize="20sp"
+        android:layout_width="222dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:text="Administrator"
+        android:textColor="#471212"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <Button
         android:id="@+id/buttonSpreCategorii"
-        android:layout_width="206dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="230dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="192dp"
+        android:backgroundTint="@color/colorAdmin"
         android:text="Catre categorii"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/butonAdaugareCategorie"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="@+id/butonAdaugareCategorie"
         app:layout_constraintTop_toBottomOf="@+id/butonAdaugareCategorie"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="34dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/donuticon" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.873"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mealicon" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="46dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="372dp"
+        android:layout_marginBottom="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/shakeicon" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="348dp"
+        android:layout_height="183dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="612dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tableicon" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="144dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/administratorlogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

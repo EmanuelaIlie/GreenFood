@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundadaugarereteta2"
     tools:context=".AdaugareReteteActivity">
 
     <EditText
@@ -112,6 +111,6 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareDescriereReteta"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="@+id/editTextAdaugareDescriereReteta"
-        app:srcCompat="@drawable/ic_launcher_background" />
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

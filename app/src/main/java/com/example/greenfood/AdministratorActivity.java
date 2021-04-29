@@ -21,15 +21,7 @@ public class AdministratorActivity extends AppCompatActivity {
         adCategorie=findViewById(R.id.butonAdaugareCategorie);
         spreCategorii=findViewById(R.id.buttonSpreCategorii);
 
-        //Integer im=R.drawable.poza01;
-        Log.d("EMA",String.valueOf(R.drawable.poza01)+" 01");
-        Log.d("EMA",String.valueOf(R.drawable.poza02)+" 02");
-        Log.d("EMA",String.valueOf(R.drawable.poza03)+" 03");
-        Log.d("EMA",String.valueOf(R.drawable.poza04)+" 04");
-        Log.d("EMA",String.valueOf(R.drawable.poza05)+" 05");
-        Log.d("EMA",String.valueOf(R.drawable.poza06)+" 06");
-        Log.d("EMA",String.valueOf(R.drawable.poza07)+" 07");
-        Log.d("EMA",String.valueOf(R.drawable.poza08)+" 08");
+
         butoane();
     }
 
