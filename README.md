@@ -75,12 +75,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- Badge App is a Mobile Application that replaces physical cards for entering Nokia buildings with your smartphone.
-
-Here's why:
-* Harder to forget your phone at home in compare to a physical badge
-* It's more convenient, less cards to worry about
-* Can manage access for different departments
+Green food is a vegan recipes application, written in romanian language.
+I did not found a similar application in play store. This is my project for
+Programming on mobile devices.
 
 ### Built With
 
