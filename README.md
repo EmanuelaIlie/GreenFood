@@ -26,7 +26,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/logo1.png" alt="Logo" width="170" height="80">
+    <img src="images/logo.png" alt="Logo" width="170" height="80">
   </a>
 
   <h3 align="center">Badge App</h3>
@@ -113,25 +113,25 @@ Here i will post some screenshots to ilustrate how the app works.
 
 1. Login screen
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/main1.png?raw=true)
+![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/login.jpg?raw=true)
 
 2. Easy registration
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/createacc.png?raw=true)
+![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/newacc.jpg?raw=true)
 
-3. After login
+3. After login, category
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/gif.gif?raw=true)
+![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/categorii.jpg?raw=true)
 
-4. This is where you scan the smartphone to gain access to the Nokia building
+4. All recipes for selected category
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/scan.png?raw=true)
+![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/onecategory.jpg?raw=true)
 
-5. Choose a department and team to join
+5. Recipe
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/departamente.png?raw=true)
+![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/retet.jpg?raw=true)
 
-6. Manage your profile
+6. Admin profile
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
     <img src="images/profil.jpg" alt="profile" width="370" height="750">
