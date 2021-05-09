@@ -29,7 +29,7 @@
     <img src="images/logo.png" alt="Logo" width="170" height="80">
   </a>
 
-  <h3 align="center">Badge App</h3>
+  <h3 align="center">GreenFood</h3>
 
   <p align="center">
     Mobile App that replaces physical cards with smartphones
@@ -113,29 +113,48 @@ Here i will post some screenshots to ilustrate how the app works.
 
 1. Login screen
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/login.jpg?raw=true)
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/login.jpg" alt="profile" width="370" height="750">
+  </a>
 
 2. Easy registration
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/newacc.jpg?raw=true)
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/newacc.jpg" alt="profile" width="370" height="750">
+  </a>
 
 3. After login, category
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/categorii.jpg?raw=true)
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/categorii.jpg" alt="profile" width="370" height="750">
+  </a>
 
 4. All recipes for selected category
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/onecategory.jpg?raw=true)
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/onecategory.jpg" alt="profile" width="370" height="750">
+  </a>
 
 5. Recipe
 
-![alt text](https://github.com/EmanuelaIlie/GreenFood/blob/main/images/retet.jpg?raw=true)
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/retet.jpg" alt="profile" width="370" height="750">
+  </a>
 
 6. Admin profile
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/profil.jpg" alt="profile" width="370" height="750">
+    <img src="images/admin.jpg" alt="profile" width="370" height="750">
   </a>
+7. Add category
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/addcategorie.jpg" alt="profile" width="370" height="750">
+  </a>
+9. Add recipe
+<a href="https://github.com/EmanuelaIlie/GreenFood">
+    <img src="images/addreteta.jpg" alt="profile" width="370" height="750">
+  </a>
+
 
 
 <!-- CONTRIBUTING -->
