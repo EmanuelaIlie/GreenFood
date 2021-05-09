@@ -129,7 +129,7 @@ Here i will post some screenshots to ilustrate how the app works.
 4. All recipes for selected category
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/onecategory.jpg" alt="profile" width="300" height="700">
+    <img src="images/one category.jpg" alt="profile" width="300" height="700">
   </a>
 
 5. Recipe
