@@ -114,45 +114,45 @@ Here i will post some screenshots to ilustrate how the app works.
 1. Login screen
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/login.jpg" alt="profile" width="370" height="750">
+    <img src="images/login.jpg" alt="profile" width="300" height="700">
   </a>
 
 2. Easy registration
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/newacc.jpg" alt="profile" width="370" height="750">
+    <img src="images/newacc.jpg" alt="profile" width="300" height="700">
   </a>
 
 3. After login, category
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/categorii.jpg" alt="profile" width="370" height="750">
+    <img src="images/categorii.jpg" alt="profile" width="300" height="700">
   </a>
 
 4. All recipes for selected category
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/onecategory.jpg" alt="profile" width="370" height="750">
+    <img src="images/onecategory.jpg" alt="profile" width="300" height="700">
   </a>
 
 5. Recipe
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/retet.jpg" alt="profile" width="370" height="750">
+    <img src="images/retet.jpg" alt="profile" width="300" height="700">
   </a>
 
 6. Admin profile
 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/admin.jpg" alt="profile" width="370" height="750">
+    <img src="images/admin.jpg" alt="profile" width="300" height="700"">
   </a>
 7. Add category
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/addcategorie.jpg" alt="profile" width="370" height="750">
+    <img src="images/addcategorie.jpg" alt="profile" width="300" height="700">
   </a>
 9. Add recipe
 <a href="https://github.com/EmanuelaIlie/GreenFood">
-    <img src="images/addreteta.jpg" alt="profile" width="370" height="750">
+    <img src="images/addreteta.jpg" alt="profile" width="300" height="700">
   </a>
 
 
