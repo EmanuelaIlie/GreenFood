@@ -145,13 +145,13 @@ Here i will post some screenshots to ilustrate how the app works.
   </a>
                                                                        
 7. Add category
-8. 
+ 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
     <img src="images/addcategorie.jpg" alt="profile" width="300" height="700">
   </a>
   
-9. Add recipe
-10. 
+8. Add recipe
+ 
 <a href="https://github.com/EmanuelaIlie/GreenFood">
     <img src="images/addreteta.jpg" alt="profile" width="300" height="700">
   </a>
