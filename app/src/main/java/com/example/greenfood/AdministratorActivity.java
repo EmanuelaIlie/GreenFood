@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class AdministratorActivity extends AppCompatActivity {
-    Button adReteta,adCategorie,spreCategorii;
+    Button adReteta,adCategorie,spreCategorii,alimente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class AdministratorActivity extends AppCompatActivity {
         adReteta=findViewById(R.id.buttonAdaugareReteta);
         adCategorie=findViewById(R.id.butonAdaugareCategorie);
         spreCategorii=findViewById(R.id.buttonSpreCategorii);
+        alimente=findViewById(R.id.buttonAlimente);
 
 
         butoane();
@@ -47,6 +48,14 @@ public class AdministratorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AdministratorActivity.this, FirstActivity.class);
+                startActivity(intent);
+            }
+        });
+        alimente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AdministratorActivity.this, ListaAlimenteActivity.class);
                 startActivity(intent);
             }
         });

@@ -19,12 +19,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFoodAdapterCategories.ViewHolder> {
+public class MyGreenFoodAdapterAlimente extends RecyclerView.Adapter<MyGreenFoodAdapterAlimente.ViewHolder> {
     MyGreenFoodData[] myGreenFoodData;
-    OnItemClickListenerCategories mOnItemClickListenerCategories;
-    public MyGreenFoodAdapterCategories(MyGreenFoodData[] myGreenFoodData,OnItemClickListenerCategories onItemClickListenerCategories) {
+    OnItemClickListenerAlimente mOnItemClickListenerAlimente;
+    public MyGreenFoodAdapterAlimente(MyGreenFoodData[] myGreenFoodData,OnItemClickListenerAlimente OnItemClickListenerAlimente) {
         this.myGreenFoodData=myGreenFoodData;
-        this.mOnItemClickListenerCategories=onItemClickListenerCategories;
+        this.mOnItemClickListenerAlimente=OnItemClickListenerAlimente;
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =LayoutInflater.from(parent.getContext());
         View view=layoutInflater.inflate(R.layout.my_food_list,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view,mOnItemClickListenerCategories);
+        ViewHolder viewHolder = new ViewHolder(view,mOnItemClickListenerAlimente);
 
         return viewHolder;
     }
@@ -43,7 +43,7 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
-        StorageReference imagesRef = storageRef.child("receipes/"+myGreenFoodDataList.getFoodName()+".jpg");
+        StorageReference imagesRef = storageRef.child("alimente/"+myGreenFoodDataList.getFoodName()+".jpg");
         holder.textViewListName.setText(myGreenFoodDataList.getFoodName());
         holder.textViewListDescription.setText(myGreenFoodDataList.getFoodDescription());
 
@@ -65,8 +65,8 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
 
     }
 
-    interface OnItemClickListenerCategories{
-        void onItemClickCategories(int position);
+    interface OnItemClickListenerAlimente{
+        void onItemClickAlimente(int position);
     }
 
     public int getItemCount() {
@@ -78,22 +78,22 @@ public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFo
         ImageView foodListImage;
         TextView textViewListName;
         TextView textViewListDescription;
-        OnItemClickListenerCategories onItemClickListenerCategories;
+        OnItemClickListenerAlimente OnItemClickListenerAlimente;
 
-        public ViewHolder(@NonNull View itemView, OnItemClickListenerCategories mOnItemClickListenerCategories) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListenerAlimente mOnItemClickListenerAlimente) {
             super(itemView);
             foodListImage = itemView.findViewById(R.id.imageListview);
             textViewListName=itemView.findViewById(R.id.textListName);
             textViewListDescription = itemView.findViewById(R.id.textListDescription);
 
-            this.onItemClickListenerCategories=mOnItemClickListenerCategories;
+            this.OnItemClickListenerAlimente=mOnItemClickListenerAlimente;
 
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onItemClickListenerCategories.onItemClickCategories(getAdapterPosition());
+            OnItemClickListenerAlimente.onItemClickAlimente(getAdapterPosition());
         }
     }
 }

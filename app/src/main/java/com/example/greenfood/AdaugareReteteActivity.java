@@ -32,6 +32,7 @@ public class AdaugareReteteActivity extends AppCompatActivity {
     EditText newNume, newIngrediente, newDescriere, newPreparare,newCategorie;
     ImageView imageViewReteta;
     Button buttonAdaugaReteta;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     private StorageReference reference= FirebaseStorage.getInstance().getReference();
@@ -76,9 +77,6 @@ public class AdaugareReteteActivity extends AppCompatActivity {
                 descriere=newDescriere.getText().toString();
                 preparare=newPreparare.getText().toString();
                 categorie=newCategorie.getText().toString();
-
-
-
                 extrage();
                 //Toast.makeText(AdaugareReteteActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
                // Log.d("EMA",String.valueOf(lungime)+"nr caategorii in button");

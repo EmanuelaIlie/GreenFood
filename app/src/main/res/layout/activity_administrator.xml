@@ -24,7 +24,7 @@
         app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.311" />
 
     <Button
         android:id="@+id/butonAdaugareCategorie"
@@ -86,11 +86,24 @@
         android:id="@+id/imageView3"
         android:layout_width="266dp"
         android:layout_height="168dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSpreCategorii"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlimente"
         app:srcCompat="@drawable/masutaicon" />
+
+    <Button
+        android:backgroundTint="@color/colorAdmin"
+        android:textColor="@color/black"
+        android:id="@+id/buttonAlimente"
+        android:layout_width="230dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="25dp"
+        android:text="Alimente"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSpreCategorii"
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toStartOf="@+id/buttonSpreCategorii"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSpreCategorii" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

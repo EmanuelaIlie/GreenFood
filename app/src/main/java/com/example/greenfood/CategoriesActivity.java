@@ -34,26 +34,11 @@ public class CategoriesActivity extends AppCompatActivity implements MyGreenFood
         String numeCategorie=getIntent().getStringExtra("numeCategorie");
 
         Log.d("EMA",numeCategorie+" in onCreate");
-      /*  LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
-                new IntentFilter("custom-message"));*/
-
         extrageLista(numeCategorie);
     }
 
 
-    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-           /* numeCategorie = intent.getStringExtra("numeCategorie");
-            Log.d("EMA",numeCategorie +" in broadcast");
-            Toast.makeText(CategoriesActivity.this, numeCategorie,Toast.LENGTH_LONG).show();
-            extrageLista();
-
-*/
-        }
-    };
 
 
     public void extrageLista(String numeCategorie){

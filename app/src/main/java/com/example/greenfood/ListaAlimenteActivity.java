@@ -1,18 +1,12 @@
 package com.example.greenfood;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,35 +14,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapter.OnItemClickListener{
+public class ListaAlimenteActivity extends AppCompatActivity implements MyGreenFoodAdapterListaAlimente.OnItemClickListenerListaAlimente{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
 
-    String numeCategorie="";
+    String numeAliment="";
 
     MyGreenFoodData[] myGreenFoodData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
-
-
+        setContentView(R.layout.activity_lista_alimente);
 
         extrageNumeSiImagine();
-/*        MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
-                new MyGreenFoodData("cina","",R.drawable.poza01),
-                new MyGreenFoodData("Pranz","",R.drawable.poza02),
-        };
-*/
-
     }
-
 
     private void extrageNumeSiImagine(){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
@@ -61,19 +43,19 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                int lungime = (int) dataSnapshot.child("category").getChildrenCount();
+                int lungime = (int) dataSnapshot.child("listaAlimente").getChildrenCount();
                 myGreenFoodData = new MyGreenFoodData[lungime];
 
 
                 for(int i=1;i<=lungime;i++){
 
-                        String nume = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("name").getValue());
-                        String imagine = String.valueOf(dataSnapshot.child("category").child(String.valueOf(i)).child("image").getValue());
-                        myGreenFoodData[i - 1] = new MyGreenFoodData(nume, " ", imagine);
-                       // Log.d("EMA", nume);
+                    String nume = String.valueOf(dataSnapshot.child("listaAlimente").child(String.valueOf(i)).child("name").getValue());
+                    String imagine = String.valueOf(dataSnapshot.child("listaAlimente").child(String.valueOf(i)).child("image").getValue());
+                    myGreenFoodData[i - 1] = new MyGreenFoodData(nume, " ", imagine);
+                    // Log.d("EMA", nume);
 
                 }
-                MyGreenFoodAdapter myGreenFoodAdapter = new MyGreenFoodAdapter(myGreenFoodData, FirstActivity.this::onItemClick);
+                MyGreenFoodAdapterListaAlimente myGreenFoodAdapter = new MyGreenFoodAdapterListaAlimente(myGreenFoodData, ListaAlimenteActivity.this::onItemClickListaAlimente);
                 recyclerView.setAdapter(myGreenFoodAdapter);
             }
             @Override
@@ -87,16 +69,12 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
 
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClickListaAlimente(int position) {
+        String numeAliment=myGreenFoodData[position].getFoodName();
+        Intent intent=new Intent(ListaAlimenteActivity.this,AlimenteActivity.class);
 
-        String numeCategorie=myGreenFoodData[position].getFoodName();
-        Intent intent=new Intent(FirstActivity.this,CategoriesActivity.class);
-        //Toast.makeText(FirstActivity.this, "o afisez din interfata", Toast.LENGTH_LONG).show();
-        intent.putExtra("numeCategorie",numeCategorie);
-        Log.d("EMA",numeCategorie+" in interfata");
-
+        intent.putExtra("numeAliment",numeAliment);
 
         startActivity(intent);
-
     }
 }
