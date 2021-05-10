@@ -32,7 +32,7 @@
   <h3 align="center">GreenFood</h3>
 
   <p align="center">
-    Mobile App that replaces physical cards with smartphones
+    Mobile App with vegan recipes
     <br />
     <a href="https://github.com/EmanuelaIlie/GreenFood"><strong>Explore the docs »</strong></a>
     <br />
