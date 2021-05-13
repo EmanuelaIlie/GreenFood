@@ -1,5 +1,8 @@
 package com.example.greenfood;
 
+/**
+ * Clasa contine datele utile pentru adapter, recyclerView
+ */
 public class MyGreenFoodData {
     private String foodImage;
     private String foodName;

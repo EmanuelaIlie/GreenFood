@@ -19,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Aceasta activitate contine retetele pentru o anumita categorie (cea pe care am dat click)
+ */
 public class CategoriesActivity extends AppCompatActivity implements MyGreenFoodAdapterCategories.OnItemClickListenerCategories{
 
 
@@ -38,9 +41,11 @@ public class CategoriesActivity extends AppCompatActivity implements MyGreenFood
     }
 
 
-
-
-
+    /**
+     * In aceasta functie se extrag toate datele(nume reteta, imagine, descriere) pentru numeCategorie
+     * Se introduc aceste date in adapter, construindu-se recyvlerView-ul
+     * @param numeCategorie numele categoriei pe care am dat click (transmisa din FirstActivity)
+     */
     public void extrageLista(String numeCategorie){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);
@@ -58,7 +63,7 @@ public class CategoriesActivity extends AppCompatActivity implements MyGreenFood
                     for(x=1;x<=lg;x++)
                         if(String.valueOf(dataSnapshot.child("category").child(String.valueOf(x)).child("name").getValue()).equals(numeCategorie))
                             break;
-                    Log.d("EMA",String.valueOf(x)+" valoare in bd");
+                    //Log.d("EMA",String.valueOf(x)+" valoare in bd");
 
                     int lungime = (int) dataSnapshot.child("category").child(String.valueOf(x)).child("receipe").getChildrenCount();
 
@@ -88,17 +93,20 @@ public class CategoriesActivity extends AppCompatActivity implements MyGreenFood
 
     }
 
+    /**
+     * Se implementeaza interfata din MyGreenFoodAdapter
+     * Se transmit datele urmatorului activity (pe ce s-a dat click) si se deschide noul activity
+     * @param position pozitia pe care am dat click
+     */
 
     @Override
     public void onItemClickCategories(int position) {
         String numeReteta=myGreenFoodData[position].getFoodName();
         String numeCategorie=getIntent().getStringExtra("numeCategorie");
         Intent intent=new Intent(CategoriesActivity.this,ReceipesActivity.class);
-        //Toast.makeText(FirstActivity.this, "o afisez din interfata", Toast.LENGTH_LONG).show();
+
         intent.putExtra("numeCategorie",numeCategorie);
         intent.putExtra("numeReteta",numeReteta);
-        Log.d("EMA",numeReteta+" in interfata");
-
 
         startActivity(intent);
     }

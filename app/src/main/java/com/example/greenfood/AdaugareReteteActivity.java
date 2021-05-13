@@ -28,6 +28,10 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+/**
+ * in acest activity se va adauga o reteta noua in baza de date
+ */
+
 public class AdaugareReteteActivity extends AppCompatActivity {
     EditText newNume, newIngrediente, newDescriere, newPreparare,newCategorie;
     ImageView imageViewReteta;
@@ -56,8 +60,15 @@ public class AdaugareReteteActivity extends AppCompatActivity {
         newCategorie = (EditText) findViewById(R.id.editTextCategorieReteta);
         buttonAdaugaReteta = (Button) findViewById(R.id.buttonAdReteta);
 
+        butoane();
 
 
+    }
+
+    /**
+     * acesta metoda contine implementarea butonului Adaugare si a imageView-ului
+     */
+    public void butoane(){
         imageViewReteta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,15 +88,17 @@ public class AdaugareReteteActivity extends AppCompatActivity {
                 descriere=newDescriere.getText().toString();
                 preparare=newPreparare.getText().toString();
                 categorie=newCategorie.getText().toString();
-                extrage();
+                adauga();
                 //Toast.makeText(AdaugareReteteActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
-               // Log.d("EMA",String.valueOf(lungime)+"nr caategorii in button");
+                // Log.d("EMA",String.valueOf(lungime)+"nr caategorii in button");
             }
         });
-
     }
 
-    public void extrage(){
+    /**
+     * aceasta metoda adauga in firebase datele corespunzatoare retetei
+     */
+    public void adauga(){
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             private static final String TAG = "EMA";
 
@@ -124,6 +137,13 @@ public class AdaugareReteteActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * aceasta metoda seteaza uri pentru imageView, doar daca requestCode e cel transmis de noi
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -134,6 +154,11 @@ public class AdaugareReteteActivity extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * aceasta metoda adauga in storage o imagine pe baza unui link (uri)
+     * @param uri
+     */
 
     private void uploadToFirebase(Uri uri){
         StorageReference fileRef=reference.child("receipes/"+nume+".jpg");

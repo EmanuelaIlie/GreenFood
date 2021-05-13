@@ -23,6 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In acest activity se afiseaza toate categoriile de retete existente
+ */
+
 public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapter.OnItemClickListener{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -49,6 +53,9 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
 
     }
 
+    /**
+     * In aceasta functie se extrage numele ctegoriei si imaginea corespunzatoare categoriei
+     */
 
     private void extrageNumeSiImagine(){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
@@ -86,6 +93,11 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
     }
 
 
+    /**
+     * Se implementeaza interfata din MyGreenFoodAdapterCategories
+     * Se transmit datele urmatorului activity (pe ce s-a dat click) si se deschide noul activity
+     * @param position pozitia pe care am dat click
+     */
     @Override
     public void onItemClick(int position) {
 
@@ -93,9 +105,6 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
         Intent intent=new Intent(FirstActivity.this,CategoriesActivity.class);
         //Toast.makeText(FirstActivity.this, "o afisez din interfata", Toast.LENGTH_LONG).show();
         intent.putExtra("numeCategorie",numeCategorie);
-        Log.d("EMA",numeCategorie+" in interfata");
-
-
         startActivity(intent);
 
     }

@@ -13,6 +13,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * in acest activity se afiseaza o lista cu alimentele din categoria ce s a dat click
+ */
+
 public class AlimenteActivity extends AppCompatActivity implements MyGreenFoodAdapterAlimente.OnItemClickListenerAlimente {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -29,6 +33,12 @@ public class AlimenteActivity extends AppCompatActivity implements MyGreenFoodAd
         extrageLista(numeAliment);
     }
 
+
+    /**
+     * In aceasta functie se extrag toate datele(nume reteta, imagine) pentru numeCategorie
+     * Se introduc aceste date in MyGreenFoodAdapterAlimente, construindu-se recyvlerView-ul
+     * @param numeCategorie numele categoriei pe care am dat click (transmisa din ListaAlimenteActivity)
+     */
     public void extrageLista(String numeCategorie){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);

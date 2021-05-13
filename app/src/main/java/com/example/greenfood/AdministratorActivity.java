@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ * Acest activity este al administratorului
+ */
+
 public class AdministratorActivity extends AppCompatActivity {
     Button adReteta,adCategorie,spreCategorii,alimente;
     @Override
@@ -26,7 +30,10 @@ public class AdministratorActivity extends AppCompatActivity {
         butoane();
     }
 
-
+    /**
+     * Functie care contine toate butoanele
+     * Pentru fiecare buton se implementeaza functionalitatile
+     */
     private void butoane(){
         adReteta.setOnClickListener(new View.OnClickListener() {
             @Override

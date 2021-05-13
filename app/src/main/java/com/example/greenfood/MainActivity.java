@@ -22,6 +22,9 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Prima fereastra, cea de autentificare
+ */
 public class MainActivity extends AppCompatActivity {
 
     Button  login;
@@ -49,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Metoda unde se creeaza functionalitatile pentru cele 2 butoane
+     * Butonul de Conectare
+     * Butonul de Creeare cont nou
+     */
     private void butoane(){
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Functie care verifica daca datele introduse sunt pentru un cont obisnuit, sau  administrator
+     * @return true daca e administrator, altfel false
+     */
+
     private boolean verificareAutentificareAdministrator(){
         String email = emailMain.getText().toString();
         String parola = passwordMain.getText().toString();
@@ -83,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /***
+     * Metoda verifica daca email-ul si parola introduse se gasesc in baza de date
+     * @return true daca exista, false altfel
+     */
     private boolean verificareAutentificare(){
         String email = emailMain.getText().toString();
         String parola = passwordMain.getText().toString();
@@ -94,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Metoda extrage email-urile si parolele din baza de date
+     */
     private void extrageEmailuriSiParole(){
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {

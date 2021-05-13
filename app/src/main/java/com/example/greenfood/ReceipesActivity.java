@@ -44,12 +44,14 @@ public class ReceipesActivity extends AppCompatActivity {
         String numeReteta=getIntent().getStringExtra("numeReteta");
 
         extrage(numeCategorie,numeReteta);
-        //construieste();
-
-
-
     }
 
+    /**
+     * In aceasta functie se extrag toate datele pentru reteta
+     * Se pun datele extrase in view-uri
+     * @param numeCategorie numele categoriei pe care am dat click (transmisa din CategoriesActivity)
+     * @param numeReteta numele retetei pe care am dat click (transmisa din CategoriesActivity)
+     */
 
     private void extrage(String numeCategorie,String numeReteta){
         // Read from the database

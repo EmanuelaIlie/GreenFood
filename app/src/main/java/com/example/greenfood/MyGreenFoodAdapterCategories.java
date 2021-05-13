@@ -19,6 +19,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+/**
+ * aceasta clasa este adapterul pentru retetele dintr-o categorie
+ */
 public class MyGreenFoodAdapterCategories extends RecyclerView.Adapter<MyGreenFoodAdapterCategories.ViewHolder> {
     MyGreenFoodData[] myGreenFoodData;
     OnItemClickListenerCategories mOnItemClickListenerCategories;

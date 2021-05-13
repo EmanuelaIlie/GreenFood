@@ -24,6 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+/**
+ * in acest activity se va adauga o categorie noua in baza de date
+ */
 
 public class AdaugareCategorieActivity extends AppCompatActivity {
 
@@ -49,6 +52,13 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
         imageViewCategorie=findViewById(R.id.imageViewCategory);
         buttonAdaugaCategorie = (Button) findViewById(R.id.buttonAdCategorie);
 
+        butoane();
+    }
+    /**
+     * acesta metoda contine implementarea butonului Adaugare si a imageView-ului
+     */
+
+    public void butoane(){
         imageViewCategorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +74,16 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 nume=newNume.getText().toString();
-                extrage();
+                adauga();
                 Toast.makeText(AdaugareCategorieActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
             }
         });
     }
-    public void extrage(){
+
+    /**
+     * aceasta metoda adauga in firebase numele si imaginea corespunzatoare categoriei
+     */
+    public void adauga(){
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             private static final String TAG = "EMA";
             @Override
@@ -84,7 +98,7 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
                     Toast.makeText(AdaugareCategorieActivity.this, "Please select image",Toast.LENGTH_LONG).show();
                 }
 
-                Log.d("EMA",String.valueOf(lg)+"nr caategorii in bd");
+                //Log.d("EMA",String.valueOf(lg)+"nr caategorii in bd");
                 myRef.child("category").child(String.valueOf(lg+1)).child("name").setValue(nume);
                 myRef.child("category").child(String.valueOf(lg+1)).child("image").setValue(nume);
 
@@ -97,6 +111,12 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * aceasta metoda seteaza uri pentru imageView, doar daca requestCode e cel transmis de noi
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -107,6 +127,10 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
 
         }
     }
+    /**
+     * aceasta metoda adauga in storage o imagine pe baza unui link (uri)
+     * @param uri
+     */
 
     private void uploadToFirebase(Uri uri){
         StorageReference fileRef=reference.child("category/"+nume+".jpg");

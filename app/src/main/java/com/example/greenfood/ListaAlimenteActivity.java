@@ -14,6 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Acest activity contine toate categoriile de alimente ce se pot inlocui
+ */
+
 public class ListaAlimenteActivity extends AppCompatActivity implements MyGreenFoodAdapterListaAlimente.OnItemClickListenerListaAlimente{
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -32,6 +36,10 @@ public class ListaAlimenteActivity extends AppCompatActivity implements MyGreenF
         extrageNumeSiImagine();
     }
 
+    /**
+     * in aceasta metoda se extrage imaginea si numele categoriei, din baza de date
+     * se adauga in adapter si se construieste recyclerView
+     */
     private void extrageNumeSiImagine(){
         RecyclerView recyclerView=findViewById(R.id.recyclerViewCategories);
         recyclerView.setHasFixedSize(true);
@@ -67,6 +75,11 @@ public class ListaAlimenteActivity extends AppCompatActivity implements MyGreenF
 
     }
 
+    /**
+     * Se implementeaza interfata din MyGreenFoodListaAlimente
+     * Se transmit datele urmatorului activity (pe ce s-a dat click) si se deschide noul activity(AlimenteActivity)
+     * @param position pozitia pe care am dat click
+     */
 
     @Override
     public void onItemClickListaAlimente(int position) {

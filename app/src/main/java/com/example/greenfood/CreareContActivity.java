@@ -19,6 +19,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * In acest activity se creeaza un cont nou
+ */
+
 public class CreareContActivity extends AppCompatActivity {
 
     EditText newName, newEmail, newPassword, newRePassword;
@@ -39,7 +43,21 @@ public class CreareContActivity extends AppCompatActivity {
         buttonCreate = (Button) findViewById(R.id.buttonCreate);
 
         extrageEmailuri();
+        buton();
 
+
+
+    }
+
+    /**
+     * In aceasta functie se adauga fucntionalitate butonului Creare cont
+     * Se verifica datele introduse sa nu mai exista
+     * Parola sa aiba minim 6 caractere
+     * Numele sa contina minim 3 caractere
+     * Adresa de email trebuie sa fie valida
+     * Parolele trebuie sa coincida
+     */
+    public void buton(){
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,6 +109,11 @@ public class CreareContActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * functie care verifica daca un string contine doar litere
+     * @param name numele stringului
+     * @return true daca stringul contine doar litere, false altfel
+     */
     public boolean isAlpha(String name) {
         char[] chars = name.toCharArray();
         for (char c : chars) {
@@ -101,6 +124,11 @@ public class CreareContActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Functia verifica daca adresa de email este corecta
+     * @param email adresa de email
+     * @return true daca e corecta, false altfel
+     */
     public boolean isValidEmailAddress(String email) {
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
@@ -108,6 +136,9 @@ public class CreareContActivity extends AppCompatActivity {
         return m.matches();
     }
 
+    /**
+     * functia extrage toate email-urile din baza de date
+     */
     private void extrageEmailuri(){
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -128,6 +159,11 @@ public class CreareContActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * functia verifica daca email-ul exista in lista extrasa din baza de date
+     * @param email
+     * @return true daca exista, false altfel
+     */
     private boolean cautEmail(String email){
         for(String temp : emails){
             if(temp.equals(email))
