@@ -12,27 +12,26 @@
 
     <Button
         android:id="@+id/buttonAdaugareReteta"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/colorAdmin"
         android:text="Adăugare rețetă"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/butonAdaugareCategorie"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="51dp"
         android:layout_marginTop="25dp"
         android:backgroundTint="@color/colorAdmin"
-        android:text="Adăugare categorie"
+        android:text="Adăugare categorie rețetă"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/buttonAdaugareReteta"
         app:layout_constraintHorizontal_bias="0.0"
@@ -43,7 +42,7 @@
         android:id="@+id/textView3"
         android:layout_width="222dp"
         android:layout_height="54dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="28dp"
         android:text="Administrator"
         android:textColor="#471212"
         android:textSize="32sp"
@@ -55,19 +54,16 @@
 
     <Button
         android:id="@+id/buttonSpreCategorii"
-        android:layout_width="230dp"
+        android:layout_width="300dp"
         android:layout_height="51dp"
         android:layout_marginTop="25dp"
-        android:layout_marginBottom="192dp"
         android:backgroundTint="@color/colorAdmin"
         android:text="Către categorii"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/butonAdaugareCategorie"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/butonAdaugareCategorie"
-        app:layout_constraintTop_toBottomOf="@+id/butonAdaugareCategorie"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/butonAdaugareCategorie" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -76,34 +72,58 @@
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043"
+        app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/administratorlogo" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="266dp"
-        android:layout_height="168dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAlimente"
-        app:srcCompat="@drawable/masutaicon" />
+        app:srcCompat="@drawable/masutaicon"
+        tools:layout_editor_absoluteY="598dp" />
 
     <Button
-        android:backgroundTint="@color/colorAdmin"
-        android:textColor="@color/black"
-        android:id="@+id/buttonAlimente"
-        android:layout_width="230dp"
+        android:id="@+id/buttonAlim"
+        android:layout_width="300dp"
         android:layout_height="51dp"
         android:layout_marginTop="25dp"
+        android:backgroundTint="@color/colorAdmin"
         android:text="Alimente"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAdAlim"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdAlim"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdAlim" />
+
+    <Button
+        android:id="@+id/buttonAdCategorieAlimente"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/colorAdmin"
+        android:text="Adăugare categorie alimente"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/buttonSpreCategorii"
-        app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="@+id/buttonSpreCategorii"
         app:layout_constraintTop_toBottomOf="@+id/buttonSpreCategorii" />
+
+    <Button
+        android:id="@+id/buttonAdAlim"
+        android:layout_width="300dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/colorAdmin"
+        android:text="Adăugare aliment"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAdCategorieAlimente"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonAdCategorieAlimente"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdCategorieAlimente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

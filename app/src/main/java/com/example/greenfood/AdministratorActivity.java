@@ -4,17 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * Acest activity este al administratorului
  */
 
 public class AdministratorActivity extends AppCompatActivity {
-    Button adReteta,adCategorie,spreCategorii,alimente;
+    Button adReteta,adCategorie,spreCategorii,alimente,adCategorieAliment,adAliment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +22,9 @@ public class AdministratorActivity extends AppCompatActivity {
         adReteta=findViewById(R.id.buttonAdaugareReteta);
         adCategorie=findViewById(R.id.butonAdaugareCategorie);
         spreCategorii=findViewById(R.id.buttonSpreCategorii);
-        alimente=findViewById(R.id.buttonAlimente);
+        adAliment=findViewById(R.id.buttonAdAlim);
+        adCategorieAliment=findViewById(R.id.buttonAdCategorieAlimente);
+        alimente=findViewById(R.id.buttonAlim);
 
 
         butoane();
@@ -63,6 +63,22 @@ public class AdministratorActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(AdministratorActivity.this, ListaAlimenteActivity.class);
+                startActivity(intent);
+            }
+        });
+        adCategorieAliment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AdministratorActivity.this, AdaugareCategorieAlimenteActivity.class);
+                startActivity(intent);
+            }
+        });
+        adAliment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AdministratorActivity.this, AdaugareAlimenteActivity.class);
                 startActivity(intent);
             }
         });

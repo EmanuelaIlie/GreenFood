@@ -24,11 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-/**
- * in acest activity se va adauga o categorie noua in baza de date
- */
 
-public class AdaugareCategorieActivity extends AppCompatActivity {
+public class AdaugareCategorieAlimenteActivity extends AppCompatActivity {
 
     EditText newNume;
     ImageView imageViewCategorie;
@@ -43,17 +40,19 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
 
     String nume="";
     int lg=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adaugare_categorie);
+        setContentView(R.layout.activity_adaugare_categorie_alimente);
 
-        newNume = (EditText) findViewById(R.id.editTextAdaugareNumeCategorie);
-        imageViewCategorie=findViewById(R.id.imageViewCategory);
-        buttonAdaugaCategorie = (Button) findViewById(R.id.buttonAdCategorie);
+        newNume = (EditText) findViewById(R.id.editTextAdaugareNumeCategorieAliment);
+        imageViewCategorie=findViewById(R.id.imageViewCategorieAliment);
+        buttonAdaugaCategorie = (Button) findViewById(R.id.buttonAdCategorieAlimente);
 
         butoane();
     }
+
     /**
      * acesta metoda contine implementarea butonului Adaugare si a imageView-ului
      */
@@ -75,13 +74,14 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
 
                 nume=newNume.getText().toString();
                 adauga();
-                Toast.makeText(AdaugareCategorieActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
+                //Toast.makeText(AdaugareAlimenteActivity.this, "Adaugare cu succes",Toast.LENGTH_LONG).show();
             }
         });
     }
 
+
     /**
-     * aceasta metoda adauga in firebase numele si imaginea corespunzatoare categoriei
+     * aceasta metoda adauga in firebase numele si imaginea corespunzatoare categoriei de alimente
      */
     public void adauga(){
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -89,18 +89,18 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                lg = (int) dataSnapshot.child("category").getChildrenCount();
+                lg = (int) dataSnapshot.child("listaAlimente").getChildrenCount();
 
                 if(imageUri!=null){
                     uploadToFirebase(imageUri);
                 }
                 else{
-                    Toast.makeText(AdaugareCategorieActivity.this, "Please select image",Toast.LENGTH_LONG).show();
+                    Toast.makeText(AdaugareCategorieAlimenteActivity.this, "Please select image",Toast.LENGTH_LONG).show();
                 }
 
-                //Log.d("EMA",String.valueOf(lg)+"nr caategorii in bd");
-                myRef.child("category").child(String.valueOf(lg+1)).child("name").setValue(nume);
-                myRef.child("category").child(String.valueOf(lg+1)).child("image").setValue(nume);
+
+                myRef.child("listaAlimente").child(String.valueOf(lg+1)).child("name").setValue(nume);
+                myRef.child("listaAlimente").child(String.valueOf(lg+1)).child("image").setValue(nume);
 
             }
             @Override
@@ -133,14 +133,14 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
      */
 
     private void uploadToFirebase(Uri uri){
-        StorageReference fileRef=reference.child("category/"+nume+".jpg");
+        StorageReference fileRef=reference.child("listaAlimente/"+nume+".jpg");
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Toast.makeText(AdaugareCategorieActivity.this,"Successfully",Toast.LENGTH_LONG).show();
+                        Toast.makeText(AdaugareCategorieAlimenteActivity.this,"Successfully",Toast.LENGTH_LONG).show();
                         Log.d("EMA","adaugare in storage");
                     }
                 });
@@ -148,10 +148,8 @@ public class AdaugareCategorieActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(AdaugareCategorieActivity.this,"Uploading fail",Toast.LENGTH_LONG).show();
+                Toast.makeText(AdaugareCategorieAlimenteActivity.this,"Uploading fail",Toast.LENGTH_LONG).show();
             }
         });
     }
-
-
 }

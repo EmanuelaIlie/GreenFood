@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenFood">
-        <activity android:name=".AlimenteActivity"></activity>
+        <activity android:name=".AdaugareAlimenteActivity"></activity>
+        <activity android:name=".AdaugareCategorieAlimenteActivity" />
+        <activity android:name=".AlimenteActivity" />
         <activity android:name=".ListaAlimenteActivity" />
         <activity android:name=".AdaugareCategorieActivity" />
         <activity android:name=".AdaugareReteteActivity" />
