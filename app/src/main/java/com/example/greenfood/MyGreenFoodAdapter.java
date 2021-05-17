@@ -1,18 +1,13 @@
 package com.example.greenfood;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,7 +32,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.my_food_list,parent,false);
+        View view=layoutInflater.inflate(R.layout.my_food_list_categorii,parent,false);
         ViewHolder viewHolder = new ViewHolder(view,mOnItemClickListener);
 
         return viewHolder;
@@ -51,8 +46,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
         StorageReference imagesRef = storageRef.child("category/"+myGreenFoodDataList.getFoodName()+".jpg");
 
 
-        holder.textViewListName.setText(myGreenFoodDataList.getFoodName());
-        holder.textViewListDescription.setText("");
+        holder.textViewListCategoriiName.setText(myGreenFoodDataList.getFoodName());
 
         //Log.d("EMA",myGreenFoodDataList.getFoodImage()+" in adaptor");
         imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -60,7 +54,7 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
             public void onSuccess(Uri uri) {
                 Glide.with(holder.itemView.getContext())
                         .load(uri)
-                        .into(holder.foodListImage);
+                        .into(holder.foodListCategoriiImage);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -82,16 +76,14 @@ public class MyGreenFoodAdapter extends RecyclerView.Adapter<MyGreenFoodAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        ImageView foodListImage;
-        TextView textViewListName;
-        TextView textViewListDescription;
+        ImageView foodListCategoriiImage;
+        TextView textViewListCategoriiName;
         OnItemClickListener onItemClickListener;
 
         public ViewHolder(@NonNull View itemView, OnItemClickListener mOnItemClickListener) {
             super(itemView);
-            foodListImage = itemView.findViewById(R.id.imageListview);
-            textViewListName=itemView.findViewById(R.id.textListName);
-            textViewListDescription = itemView.findViewById(R.id.textListDescription);
+            foodListCategoriiImage = itemView.findViewById(R.id.imageListCategoriiview);
+            textViewListCategoriiName=itemView.findViewById(R.id.textListCategoriiName);
             this.onItemClickListener=mOnItemClickListener;
 
             itemView.setOnClickListener(this);

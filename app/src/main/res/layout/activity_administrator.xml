@@ -82,11 +82,11 @@
         android:id="@+id/imageView3"
         android:layout_width="200dp"
         android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.981"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/masutaicon"
-        tools:layout_editor_absoluteY="598dp" />
+        app:srcCompat="@drawable/masutaicon" />
 
     <Button
         android:id="@+id/buttonAlim"

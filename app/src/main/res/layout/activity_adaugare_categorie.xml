@@ -47,15 +47,14 @@
         android:id="@+id/buttonAdCategorie"
         android:layout_width="280dp"
         android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/round_bg"
-        android:text="Adaugare categorie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Adăugare categorie"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareNumeCategorie"
+        app:layout_constraintStart_toStartOf="@+id/editTextAdaugareNumeCategorie"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAdaugareNumeCategorie" />
 
     <ImageView
         android:id="@+id/imageViewCategory"
@@ -73,10 +72,10 @@
         android:id="@+id/imageView5"
         android:layout_width="131dp"
         android:layout_height="74dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.053"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.444"
         app:srcCompat="@drawable/categorieadaugareicon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
+    Button buttonAlimenteCePotFiInlocuite;
 
     String numeCategorie="";
 
@@ -42,15 +45,21 @@ public class FirstActivity extends AppCompatActivity implements MyGreenFoodAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-
-
+        buttonAlimenteCePotFiInlocuite=findViewById(R.id.buttonAlimenteCePotFiInlocuite);
+        butoane();
         extrageNumeSiImagine();
-/*        MyGreenFoodData[] myGreenFoodData = new MyGreenFoodData[]{
-                new MyGreenFoodData("cina","",R.drawable.poza01),
-                new MyGreenFoodData("Pranz","",R.drawable.poza02),
-        };
-*/
 
+    }
+
+    public void butoane(){
+        buttonAlimenteCePotFiInlocuite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FirstActivity.this, ListaAlimenteActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

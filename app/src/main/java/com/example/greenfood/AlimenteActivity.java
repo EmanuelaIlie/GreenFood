@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AlimenteActivity extends AppCompatActivity implements MyGreenFoodAdapterAlimente.OnItemClickListenerAlimente {
 
+
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
@@ -29,9 +34,13 @@ public class AlimenteActivity extends AppCompatActivity implements MyGreenFoodAd
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alimente);
 
+
+
         String numeAliment=getIntent().getStringExtra("numeAliment");
         extrageLista(numeAliment);
     }
+
+
 
 
     /**

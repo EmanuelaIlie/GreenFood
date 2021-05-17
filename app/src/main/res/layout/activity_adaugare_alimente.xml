@@ -11,7 +11,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="44dp"
         android:text="Adăugare aliment"
 
@@ -41,10 +41,10 @@
         android:layout_height="74dp"
 
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewCategory"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.444"
         app:srcCompat="@drawable/categorieadaugareicon" />
 
     <EditText
@@ -68,9 +68,11 @@
         android:id="@+id/buttonAdAliment"
         android:layout_width="280dp"
         android:layout_height="51dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/round_bg"
-        android:text="Adaugare aliment"
+        android:text="Adăugare aliment"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/editTextAdaugareAlimentCategorie"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextAdaugareAlimentCategorie"
@@ -80,7 +82,7 @@
         android:id="@+id/editTextAdaugareAlimentCategorie"
         android:layout_width="280dp"
         android:layout_height="51dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_category"
         android:drawablePadding="16dp"

@@ -1,14 +1,11 @@
 package com.example.greenfood;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +30,7 @@ public class MyGreenFoodAdapterListaAlimente extends RecyclerView.Adapter<MyGree
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater =LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.my_food_list,parent,false);
+        View view=layoutInflater.inflate(R.layout.my_food_list_categorii,parent,false);
         ViewHolder viewHolder = new ViewHolder(view,mOnItemClickListenerListaAlimente);
 
         return viewHolder;
@@ -47,7 +44,6 @@ public class MyGreenFoodAdapterListaAlimente extends RecyclerView.Adapter<MyGree
         StorageReference storageRef = storage.getReference();
         StorageReference imagesRef = storageRef.child("listaAlimente/"+myGreenFoodDataList.getFoodName()+".jpg");
         holder.textViewListName.setText(myGreenFoodDataList.getFoodName());
-        holder.textViewListDescription.setText(myGreenFoodDataList.getFoodDescription());
 
         //Log.d("EMA",myGreenFoodDataList.getFoodImage()+" in adaptor");
         imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -79,14 +75,13 @@ public class MyGreenFoodAdapterListaAlimente extends RecyclerView.Adapter<MyGree
 
         ImageView foodListImage;
         TextView textViewListName;
-        TextView textViewListDescription;
         OnItemClickListenerListaAlimente OnItemClickListenerListaAlimente;
 
         public ViewHolder(@NonNull View itemView, OnItemClickListenerListaAlimente mOnItemClickListenerListaAlimente) {
             super(itemView);
-            foodListImage = itemView.findViewById(R.id.imageListview);
-            textViewListName=itemView.findViewById(R.id.textListName);
-            textViewListDescription = itemView.findViewById(R.id.textListDescription);
+            foodListImage = itemView.findViewById(R.id.imageListCategoriiview);
+            textViewListName=itemView.findViewById(R.id.textListCategoriiName);
+
 
             this.OnItemClickListenerListaAlimente=mOnItemClickListenerListaAlimente;
 

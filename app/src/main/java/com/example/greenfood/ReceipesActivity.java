@@ -21,9 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ReceipesActivity extends AppCompatActivity {
 
     //private List<String> nameReceipes = new ArrayList<String>();
@@ -62,7 +59,7 @@ public class ReceipesActivity extends AppCompatActivity {
                 nume=findViewById(R.id.textViewNameReceipes);
                 ingrediente=findViewById(R.id.editTextTextMultiLineIngredientReicepes);
                 preparare=findViewById(R.id.editTextTextMultiLinePreparationReceipes);
-                imagine=findViewById(R.id.imageViewReceipes);
+                imagine=findViewById(R.id.imageViewReceipesAct);
 
 
                 int lg = (int) dataSnapshot.child("category").getChildrenCount();
@@ -84,7 +81,9 @@ public class ReceipesActivity extends AppCompatActivity {
 
                         FirebaseStorage storage = FirebaseStorage.getInstance();
                         StorageReference storageRef = storage.getReference();
-                        StorageReference imagesRef = storageRef.child(img+".jpg");
+                        StorageReference imagesRef = storageRef.child("receipes/"+img+".jpg");
+
+                        Log.d("EMA",img+" in extrage");
 
                         imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
